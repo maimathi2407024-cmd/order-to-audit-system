@@ -362,7 +362,7 @@ async function renderMyOrders(c) {
 
 async function renderPurchases(c) {
   const rms = MASTERS.items.filter(i => i.category !== "finished_good");
-  const purchases = (await api("/api/reports/all")).purchase_register || [];
+  const purchases = await api("/api/purchases");
   c.innerHTML = `
     <div class="card" style="max-width:540px;">
       <h3 style="margin-top:0;">Record Raw Material / Packaging Purchase</h3>

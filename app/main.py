@@ -215,6 +215,10 @@ def stock_ledger(
     return get_stock_ledger_report(conn, item_id, start_date, end_date)
 
 
+@app.get("/api/purchases")
+def list_purchases(user=Depends(require_roles("admin", "production", "auditor", "owner")), conn=Depends(get_db)):
+ return get_purchase_register(conn)
+
 @app.post("/api/purchases")
 def create_purchase(
     req: PurchaseReq,
